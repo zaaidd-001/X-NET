@@ -1,154 +1,196 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>X-NET Support Portal</title>
-<meta name="description" content="Submit your social media account issues to X-NET. Expect a reply in 24–48 hours." />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#071226;
-    --surface:#0b1726;
-    --muted:#9fb3c9;
-    --text:#e6f4ff;
-    --accent:#ffb86b;
-    --radius:12px;
-    --max-width:700px;
-    font-family:"Poppins",system-ui,sans-serif;
-  }
-  body{
-    margin:0;
-    padding:28px;
-    background:var(--bg);
-    color:var(--text);
-    display:flex;
-    justify-content:center;
-    min-height:100vh;
-  }
-  .wrap{width:100%;max-width:var(--max-width);}
-  h1{margin:0 0 8px 0}
-  p{margin:0 0 12px 0;color:var(--muted)}
-  form{
-    background:var(--surface);
-    padding:20px;
-    border-radius:var(--radius);
-    box-shadow:0 8px 24px rgba(2,6,23,0.5)
-  }
-  label{display:block;color:var(--muted);margin-bottom:6px;font-size:14px}
-  input,select,textarea{
-    width:100%;
-    padding:10px;
-    border-radius:8px;
-    border:1px solid rgba(255,255,255,0.03);
-    background:rgba(255,255,255,0.02);
-    color:var(--text);
-    margin-bottom:14px
-  }
-  .btn{
-    background:var(--accent);
-    color:#071226;
-    border:none;
-    padding:10px 16px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:700
-  }
-  .msg{display:none;padding:12px;border-radius:8px;margin-top:10px}
-  .msg.success{background:rgba(255,184,107,0.12);color:var(--accent)}
-  .msg.error{background:rgba(255,100,100,0.08);color:#ff8a8a}
-  footer{margin-top:18px;color:var(--muted);font-size:14px;text-align:center}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="X-NET • Social Media Experts | Submit your issue and get help within 24–48 hours." />
+  <title>X-NET | Issue Submission Portal</title>
+
+  <style>
+    /* -------- Base Reset -------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    h1, h2, h3 {
+      color: #facc15;
+    }
+
+    a {
+      color: #facc15;
+      text-decoration: none;
+    }
+
+    /* -------- Layout -------- */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      color: #cbd5e1;
+    }
+
+    /* -------- Form Styling -------- */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    input, select, textarea {
+      margin-top: 6px;
+      padding: 10px 12px;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      background-color: #1e293b;
+      color: #f8fafc;
+      font-size: 0.95rem;
+      resize: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #facc15;
+      box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.2);
+    }
+
+    .submit-btn {
+      background-color: #facc15;
+      color: #0f172a;
+      font-weight: bold;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #eab308;
+    }
+
+    #successMsg {
+      display: none;
+      color: #22c55e;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>X-NET Support Portal</h1>
-    <p>Submit your issue and we will reply within 24–48 hours.</p>
+  <div class="container">
+    <header>
+      <h1>X-NET</h1>
+      <p>Social Media Experts • Submit your issue and get help within 24–48 hours.</p>
+    </header>
 
-    <!-- Form -->
-    <form id="issueForm" action="https://formspree.io/f/xkgpwyzr" method="POST" novalidate>
-      <label for="name">Name *</label>
-      <input id="name" name="name" type="text" required placeholder="Your name">
+    <form id="issueForm" action="https://formspree.io/f/xkgpwyzr" method="POST">
+      <label>
+        Name *
+        <input type="text" name="name" required />
+      </label>
 
-      <label for="email">Email *</label>
-      <input id="email" name="email" type="email" required placeholder="you@example.com">
+      <label>
+        Email *
+        <input type="email" name="_replyto" required />
+      </label>
 
-      <label for="handles">Other Contact Handles (optional)</label>
-      <input id="handles" name="handles" type="text" placeholder="@yourInstagram or Telegram ID">
+      <label>
+        Other Contact Handles (optional)
+        <input type="text" name="contact_handles" placeholder="@yourhandle or Telegram ID" />
+      </label>
 
-      <label for="type">Issue Type *</label>
-      <select id="type" name="type" required>
-        <option value="" disabled selected>Select issue type</option>
-        <option>Removals</option>
-        <option>Recoveries</option>
-        <option>Verification</option>
-        <option>Other</option>
-      </select>
+      <label>
+        Issue Type *
+        <select name="issue_type" required>
+          <option value="">Select Issue</option>
+          <option value="removal">Removal</option>
+          <option value="recovery">Recovery</option>
+          <option value="verification">Verification</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
 
-      <label for="description">Issue Description *</label>
-      <textarea id="description" name="description" rows="5" required placeholder="Describe your issue..."></textarea>
+      <label>
+        Issue Description *
+        <textarea name="message" required placeholder="Describe your issue here..."></textarea>
+      </label>
 
-      <button type="submit" class="btn">Submit Issue</button>
-
-      <div id="successMsg" class="msg success" role="status" aria-live="polite">
-        ✅ Thank you — we received your issue. Expect a reply in 24–48 hours.
-      </div>
-      <div id="errorMsg" class="msg error" role="alert" aria-live="assertive"></div>
+      <button type="submit" class="submit-btn">Submit Issue</button>
     </form>
 
-    <footer>© <span id="year"></span> X-NET • <a href="mailto:x-net@gmail.com" style="color:var(--accent)">x-net@gmail.com</a></footer>
+    <p id="successMsg">✅ Thank you! Your issue has been submitted. Expect a reply within 24–48 hours.</p>
+
+    <footer>
+      © 2025 X-NET • <a href="mailto:x-net@gmail.com">x-net@gmail.com</a>
+    </footer>
   </div>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  <script>
+    const form = document.getElementById("issueForm");
+    const successMsg = document.getElementById("successMsg");
 
-  const form = document.getElementById('issueForm');
-  const successMsg = document.getElementById('successMsg');
-  const errorMsg = document.getElementById('errorMsg');
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    successMsg.style.display = 'none';
-    errorMsg.style.display = 'none';
-    errorMsg.textContent = '';
-
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
-
-    const data = new FormData(form);
-
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
+      const response = await fetch(form.action, {
+        method: form.method,
         body: data,
-        headers: {'Accept': 'application/json'}
+        headers: { Accept: "application/json" },
       });
 
-      if (res.ok) {
+      if (response.ok) {
         form.reset();
-        successMsg.style.display = 'block';
-        setTimeout(()=> successMsg.style.display='none',10000);
-        return;
+        successMsg.style.display = "block";
+      } else {
+        alert("⚠️ Something went wrong. Please try again later.");
       }
-
-      if (res.status === 422) {
-        const json = await res.json().catch(()=>null);
-        errorMsg.textContent = json?.errors?.map(e=>e.message).join(' — ') || 'Validation failed.';
-        errorMsg.style.display = 'block';
-        return;
-      }
-
-      errorMsg.textContent = 'Server error: '+res.status+' — please try again later.';
-      errorMsg.style.display = 'block';
-
-    } catch (err) {
-      console.error('Fetch error:', err);
-      errorMsg.textContent = 'Network error — please check your connection or contact x-net@gmail.com.';
-      errorMsg.style.display = 'block';
-    }
-  });
-</script>
+    });
+  </script>
 </body>
-</html>
+            </html>
