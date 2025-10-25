@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Basic meta / SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>X-NET — Social Media Experts</title>
+  <meta name="description" content="X-NET — Social media experts helping students & freelancers with removals, recoveries and verification. Trusted, affordable, reliable." />
+  <meta name="author" content="X-NET" />
+
+  <!-- Open Graph (social preview) -->
+  <meta property="og:title" content="X-NET — Social Media Experts" />
+  <meta property="og:description" content="Trusted help for account removals, recoveries, and verification. Contact us: x-net@gmail.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="" />
+  <meta property="og:url" content="" />
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" href="" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS: internal, single-file -->
+  <style>
+    /* =========================
+       Theme variables (dark)
+       ========================= */
+    :root{
+      --bg: #071226;           /* page background */
+      --surface: #0b1726;      /* card / nav background */
+      --muted: #9fb3c9;        /* secondary text */
+      --text: #e6f4ff;         /* main text */
+      --accent: #ffb86b;       /* warm accent */
+      --accent-2: #ff8a4b;     /* secondary warm */
+      --glass: rgba(255,255,255,0.03);
+      --radius: 12px;
+      --max-width: 1100px;
+      --shadow: 0 6px 18px rgba(2,6,23,0.6);
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#03111c 120%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      font-size:16px;
+      padding:24px;
+      display:flex;
+      justify-content:center;
+      font-weight:400;
+    }
+
+    /* container */
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    /* Header / nav */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:var(--text);
+    }
+    .logo{
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:inline-grid;
+      place-items:center;
+      box-shadow:0 6px 18px rgba(255,136,75,0.12), inset 0 -6px 18px rgba(0,0,0,0.2);
+      font-weight:700;
+      color:#071226;
+      font-size:18px;
+    }
+    nav{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      font-weight:600;
+      transition:all .18s ease;
+    }
+    nav a:hover{ color:var(--text); background:var(--glass); transform:translateY(-2px) }
+
+    /* mobile menu button */
+    .menu-btn{
+      display:none;
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.04);
+      color:var(--text);
+      padding:8px;
+      border-radius:10px;
+    }
+
+    /* Hero */
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:var(--radius);
+      padding:36px;
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      align-items:center;
+      margin-bottom:22px;
+    }
+    .hero h1{
+      margin:0 0 8px 0;
+      font-size:40px;
+      letter-spacing: -0.02em;
+    }
+    .hero p.sub{
+      margin:0 0 18px 0;
+      color:var(--muted);
+      font-size:18px;
+    }
+    .hero .ctas{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 16px;
+      background:var(--accent);
+      color:#071226;
+      border:none;
+      border-radius:10px;
+      cursor:pointer;
+      text-decoration:none;
+      font-weight:700;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid rgba(255,255,255,0.04);
+      font-weight:600;
+    }
+    .btn:active{ transform:translateY(1px) }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,0.02), 0 10px 30px rgba(2,6,23,0.55);
+      text-align:center;
+    }
+    .hero-card h3{ margin:0 0 6px 0; }
+    .hero-card p{ margin:0; color:var(--muted) }
+
+    /* Sections */
+    section{
+      margin-bottom:22px;
+      background:transparent;
+    }
+    .section-header{
+      display:flex;
+      align-items:end;
+      gap:12px;
+      margin-bottom:14px;
+    }
+    .section-header h2{ margin:0; font-size:20px; }
+    .section-header p{ margin:0; color:var(--muted); font-size:14px }
+
+    /* Feature grid */
+    .features{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:14px;
+    }
+    .feature{
+      background:var(--surface);
+      padding:18px;
+      border-radius:10px;
+      box-shadow:0 8px 20px rgba(2,6,23,0.45);
+      transition:transform .18s ease;
+    }
+    .feature h3{ margin:0 0 8px 0; }
+    .feature p{ margin:0; color:var(--muted) }
+    .feature:hover{ transform:translateY(-6px) }
+
+    /* About */
+    .about{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      background:linear-gradient(90deg, rgba(255,255,255,0.01), transparent);
+      padding:16px;
+      border-radius:10px;
+    }
+    .about .avatar{
+      min-width:120px;
+      min-height:120px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      color:#071226;
+      font-size:28px;
+      box-shadow:0 8px 24px rgba(255,136,75,0.08);
+    }
+
+    /* Pricing */
+    .pricing-grid{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:14px;
+    }
+    .tier{
+      background:var(--surface);
+      padding:18px;
+      border-radius:10px;
+      text-align:center;
+      box-shadow:0 8px 20px rgba(2,6,23,0.45);
+    }
+    .price{ font-size:22px; font-weight:700; margin:12px 0 6px 0; color:var(--accent) }
+    .tier p{ color:var(--muted); margin:0 0 12px 0 }
+
+    /* FAQ */
+    .faq{ display:grid; gap:8px; }
+    .q{ background:var(--surface); padding:12px; border-radius:10px; }
+    .q strong{ display:block; margin-bottom:6px }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:18px;
+      align-items:start;
+    }
+    .contact form{
+      background:var(--surface);
+      padding:16px;
+      border-radius:10px;
+    }
+    label{ display:block; font-size:13px; margin-bottom:6px; color:var(--muted) }
+    input[type="text"], input[type="email"], textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.03);
+      background:rgba(255,255,255,0.02);
+      color:var(--text);
+      margin-bottom:12px;
+      resize:vertical;
+      font-size:15px;
+    }
+    .contact-info{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      padding:18px;
+      border-radius:10px;
+    }
+    .contact-info a{ color:var(--accent); text-decoration:none; font-weight:700 }
+
+    /* Footer */
+    footer{
+      color:var(--muted);
+      font-size:14px;
+      text-align:center;
+      padding:18px 0 6px 0;
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .pricing-grid, .features{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width:640px){
+      header{ flex-direction:column; align-items:stretch; gap:10px }
+      nav{ display:none; }
+      .menu-btn{ display:inline-block }
+      .features{ grid-template-columns:1fr }
+      .pricing-grid{ grid-template-columns:1fr }
+      .hero h1{ font-size:32px }
+    }
+
+    /* subtle entrance animation */
+    .fade-in { opacity:0; transform:translateY(8px); animation:fadeIn .7s ease forwards }
+    .stagger-1{ animation-delay:.06s } .stagger-2{ animation-delay:.12s } .stagger-3{ animation-delay:.18s } .stagger-4{ animation-delay:.24s }
+    @keyframes fadeIn{ to{ opacity:1; transform:none } }
+
+    /* small utilities */
+    .muted{ color:var(--muted) }
+    .small{ font-size:13px }
+    .center{ text-align:center }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+
+    <!-- Header -->
+    <header class="fade-in" aria-label="Top navigation">
+      <a href="#main" class="brand" aria-label="X-NET home">
+        <div class="logo" aria-hidden="true">XN</div>
+        <div>
+          <strong style="display:block">X-NET</strong>
+          <span class="small muted">Social Media Experts</span>
+        </div>
+      </a>
+
+      <nav aria-label="Primary">
+        <a href="#main">Home</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="https://instagram.com/x89c8" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+      </nav>
+
+      <!-- Mobile menu button (JS toggles nav) -->
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">Menu ☰</button>
+    </header>
+
+    <!-- Mobile nav (hidden on desktop) -->
+    <nav id="mobileNav" style="display:none; margin-bottom:18px;">
+      <a href="#main">Home</a> •
+      <a href="#features">Features</a> •
+      <a href="#about">About</a> •
+      <a href="#pricing">Pricing</a> •
+      <a href="#faq">FAQ</a> •
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- HERO -->
+    <section id="main" class="hero" aria-labelledby="hero-heading">
+      <div class="fade-in stagger-1">
+        <h1 id="hero-heading">X-NET</h1>
+        <p class="sub">Social Media Experts — trusted help for account removals, recoveries & verification.</p>
+
+        <div class="ctas" role="group" aria-label="Primary actions">
+          <!-- Primary CTA: contact form anchor -->
+          <a class="btn" href="#contact">Contact Us</a>
+
+          <!-- Secondary CTA: Instagram -->
+          <a class="btn secondary" href="https://instagram.com/x89c8" target="_blank" rel="noopener noreferrer">Instagram @x89c8</a>
+
+          <!-- Mail CTA -->
+          <a class="btn secondary" href="mailto:x-net@gmail.com">Email Us</a>
+        </div>
+
+        <p class="muted small" style="margin-top:12px">
+          We help students & freelancers navigate account problems. Affordable — trusted — discreet.
+        </p>
+      </div>
+
+      <!-- right card -->
+      <aside class="hero-card fade-in stagger-2" aria-label="Quick contact">
+        <h3>Quick Contact</h3>
+        <p class="muted small" style="margin-bottom:10px">Reach out — we'll reply ASAP</p>
+        <div style="display:flex;gap:8px;flex-direction:column">
+          <a class="btn" href="mailto:x-net@gmail.com">Email: x-net@gmail.com</a>
+          <a class="btn secondary" href="tel:+919999999999">Phone: +91 9999999999</a>
+          <a class="btn secondary" href="https://instagram.com/x89c8" target="_blank" rel="noopener noreferrer">Instagram @x89c8</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="fade-in stagger-3" aria-labelledby="features-heading">
+      <div class="section-header">
+        <h2 id="features-heading">What we do</h2>
+        <p class="muted small">Simple services to solve complex platform problems</p>
+      </div>
+
+      <div class="features" role="list">
+        <!-- Feature 1 -->
+        <article class="feature" role="listitem" aria-labelledby="f1">
+          <h3 id="f1">Removals</h3>
+          <p>Assistance with removing fake or impersonating accounts — starts from $100 (depends on account).</p>
+        </article>
+
+        <!-- Feature 2 -->
+        <article class="feature" role="listitem" aria-labelledby="f2">
+          <h3 id="f2">Recoveries</h3>
+          <p>We help recover suspended or disabled accounts — pricing depends on the reason and platform.</p>
+        </article>
+
+        <!-- Feature 3 -->
+        <article class="feature" role="listitem" aria-labelledby="f3">
+          <h3 id="f3">Verification</h3>
+          <p>Verification assistance for personal & business accounts — price varies by verification type.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="fade-in stagger-4" aria-labelledby="about-heading">
+      <div class="section-header">
+        <h2 id="about-heading">About X-NET</h2>
+        <p class="muted small">Warm, personal support for students and freelancers navigating social platforms.</p>
+      </div>
+
+      <div class="about" role="article">
+        <div class="avatar" aria-hidden="true">XN</div>
+        <div>
+          <p style="margin-top:0"><strong>Who we are</strong></p>
+          <p class="muted">X-NET is a small team focused on providing reliable and affordable social account services.
+            We value privacy, clarity and quick responses — especially for students and freelancers who need their online presence secured.</p>
+
+          <p style="margin-top:12px;"><strong>Our promise</strong></p>
+          <ul style="margin:8px 0 0 18px;color:var(--muted);">
+            <li>Transparent pricing & clear communication</li>
+            <li>Trusted approach — confidentiality prioritized</li>
+            <li>Practical guidance to reduce future risk</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="fade-in" aria-labelledby="pricing-heading">
+      <div class="section-header">
+        <h2 id="pricing-heading">Pricing</h2>
+        <p class="muted small">Straightforward. Prices may vary depending on account type and specifics — contact us for a quote.</p>
+      </div>
+
+      <div class="pricing-grid" role="list">
+        <div class="tier" role="listitem" aria-labelledby="t1">
+          <h3 id="t1">Removals</h3>
+          <div class="price">$100<span class="small muted">+</span></div>
+          <p>Removal of impersonation or fake accounts. Price starts at $100 and varies by case.</p>
+          <p class="small muted">Contact us for case evaluation.</p>
+        </div>
+
+        <div class="tier" role="listitem" aria-labelledby="t2">
+          <h3 id="t2">Recoveries</h3>
+          <div class="price">Varies</div>
+          <p>Account recoveries for suspended/disabled accounts. Cost depends on platform & reason.</p>
+          <p class="small muted">Send details to x-net@gmail.com</p>
+        </div>
+
+        <div class="tier" role="listitem" aria-labelledby="t3">
+          <h3 id="t3">Verification</h3>
+          <div class="price">Varies</div>
+          <p>Assistance for personal or business verification. Price depends on verification type.</p>
+          <p class="small muted">We advise on the best route for your case.</p>
+        </div>
+      </div>
+
+      <p class="muted small center" style="margin-top:12px;">
+        For more info & quotes: <a href="mailto:x-net@gmail.com" aria-label="Email X-NET">x-net@gmail.com</a>
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="fade-in" aria-labelledby="faq-heading">
+      <div class="section-header">
+        <h2 id="faq-heading">FAQ</h2>
+        <p class="muted small">Quick answers</p>
+      </div>
+
+      <div class="faq" role="list">
+        <div class="q" role="listitem" aria-labelledby="q1">
+          <strong id="q1">Why choose X-NET?</strong>
+          <div class="muted">Cheapest. Trusted. Reliable. We prioritize privacy and deliver pragmatic solutions for students & freelancers.</div>
+        </div>
+
+        <div class="q" role="listitem" aria-labelledby="q2">
+          <strong id="q2">How do I get started?</strong>
+          <div class="muted">Contact us via email or Instagram with a short description of your problem; we’ll evaluate and provide next steps.</div>
+        </div>
+
+        <div class="q" role="listitem" aria-labelledby="q3">
+          <strong id="q3">Is my data safe?</strong>
+          <div class="muted">Yes — confidentiality is part of our service. We only request what's necessary to resolve the issue.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="fade-in" aria-labelledby="contact-heading">
+      <div class="section-header">
+        <h2 id="contact-heading">Contact</h2>
+        <p class="muted small">Choose the most convenient way to reach us</p>
+      </div>
+
+      <div class="contact" role="region" aria-label="Contact section">
+        <!-- Contact form (mailto fallback) -->
+        <form onsubmit="handleForm(event)" aria-label="Contact form">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about the issue or question..." required></textarea>
+
+          <button class="btn" type="submit">Send message</button>
+          <p class="small muted" style="margin-top:10px">Or email directly: <a href="mailto:x-net@gmail.com">x-net@gmail.com</a></p>
+        </form>
+
+        <!-- Contact info -->
+        <aside class="contact-info" aria-label="Contact information">
+          <h3 style="margin-top:0">Get in touch</h3>
+          <p class="muted">Instagram</p>
+          <p><a href="https://instagram.com/x89c8" target="_blank" rel="noopener noreferrer">@x89c8</a></p>
+
+          <p class="muted">Email</p>
+          <p><a href="mailto:x-net@gmail.com">x-net@gmail.com</a></p>
+
+          <p class="muted">Phone</p>
+          <p><a href="tel:+919999999999">+91 9999999999</a></p>
+
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0" />
+          <p class="small muted">We aim to reply within 24–72 hours depending on volume. For urgent cases, include "URGENT" in your subject/message.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="fade-in" role="contentinfo">
+      <div class="small muted">© <span id="year"></span> X-NET — Social Media Experts • <a href="mailto:x-net@gmail.com" style="color:var(--accent)">x-net@gmail.com</a></div>
+    </footer>
+  </div>
+
+  <!-- Minimal JS: mobile nav, form handling, small UX -->
+  <script>
+    // set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile nav toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (menuBtn){
+      menuBtn.addEventListener('click', () => {
+        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!expanded));
+        mobileNav.style.display = expanded ? 'none' : 'block';
+      });
+    }
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+          // close mobile nav if open
+          if (mobileNav && mobileNav.style.display === 'block'){
+            mobileNav.style.display = 'none';
+            menuBtn && menuBtn.setAttribute('aria-expanded','false');
+          }
+        }
+      });
+    });
+
+    // Handle contact form: simple mailto fallback (no backend)
+    function handleForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      // Create mailto link for user's mail client
+      const subject = encodeURIComponent('X-NET Inquiry from ' + name);
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+      // open user's email client
+      window.location.href = 'mailto:x-net@gmail.com?subject=' + subject + '&body=' + body;
+    }
+
+    // Simple fade-in trigger: add 'fade-in' contents already have animation; if you want to re-trigger, you can add logic here.
+  </script>
+</body>
+</html>
