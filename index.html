@@ -1,102 +1,154 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>X-NET Support Portal</title>
-<meta name="description" content="Submit your social media account issues to X-NET. Get help with removals, recoveries, and verifications. Expect a reply in 24–48 hours.">
+<meta name="description" content="Submit your social media account issues to X-NET. Expect a reply in 24–48 hours." />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
-:root{
-  --bg:#071226; --surface:#0b1726; --muted:#9fb3c9; --text:#e6f4ff;
-  --accent:#ffb86b; --accent-2:#ff8a4b; --radius:12px; --max-width:700px;
-  font-family:"Poppins",system-ui,sans-serif;
-}
-body{margin:0;padding:24px;background:var(--bg);color:var(--text);display:flex;justify-content:center;min-height:100vh;line-height:1.5;}
-.wrap{width:100%;max-width:var(--max-width);}
-h1,h2,h3{margin:0 0 12px 0;}
-p{margin:0 0 12px 0;}
-a{color:var(--accent);text-decoration:none;}
-.section{margin-bottom:32px;}
-.hero{text-align:center;margin-bottom:32px;}
-.hero h1{font-size:36px;}
-.hero p{color:var(--muted);}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 20px;background:var(--accent);color:#071226;border:none;border-radius:10px;cursor:pointer;font-weight:700;text-decoration:none;transition:all .2s;}
-.btn:hover{background:var(--accent-2);}
-form{background:var(--surface);padding:24px;border-radius:var(--radius);box-shadow:0 8px 24px rgba(2,6,23,0.5);}
-label{display:block;margin-bottom:6px;color:var(--muted);}
-input,textarea,select{width:100%;padding:10px 12px;margin-bottom:16px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:rgba(255,255,255,0.02);color:var(--text);font-size:15px;resize:vertical;}
-.confirmation{display:none;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:16px;border-radius:10px;text-align:center;color:var(--accent);margin-top:12px;}
-footer{text-align:center;color:var(--muted);font-size:14px;margin-top:32px;}
+  :root{
+    --bg:#071226;
+    --surface:#0b1726;
+    --muted:#9fb3c9;
+    --text:#e6f4ff;
+    --accent:#ffb86b;
+    --radius:12px;
+    --max-width:700px;
+    font-family:"Poppins",system-ui,sans-serif;
+  }
+  body{
+    margin:0;
+    padding:28px;
+    background:var(--bg);
+    color:var(--text);
+    display:flex;
+    justify-content:center;
+    min-height:100vh;
+  }
+  .wrap{width:100%;max-width:var(--max-width);}
+  h1{margin:0 0 8px 0}
+  p{margin:0 0 12px 0;color:var(--muted)}
+  form{
+    background:var(--surface);
+    padding:20px;
+    border-radius:var(--radius);
+    box-shadow:0 8px 24px rgba(2,6,23,0.5)
+  }
+  label{display:block;color:var(--muted);margin-bottom:6px;font-size:14px}
+  input,select,textarea{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,0.03);
+    background:rgba(255,255,255,0.02);
+    color:var(--text);
+    margin-bottom:14px
+  }
+  .btn{
+    background:var(--accent);
+    color:#071226;
+    border:none;
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:700
+  }
+  .msg{display:none;padding:12px;border-radius:8px;margin-top:10px}
+  .msg.success{background:rgba(255,184,107,0.12);color:var(--accent)}
+  .msg.error{background:rgba(255,100,100,0.08);color:#ff8a8a}
+  footer{margin-top:18px;color:var(--muted);font-size:14px;text-align:center}
 </style>
 </head>
 <body>
-<div class="wrap">
+  <div class="wrap">
+    <h1>X-NET Support Portal</h1>
+    <p>Submit your issue and we will reply within 24–48 hours.</p>
 
-  <section class="hero" aria-labelledby="hero-heading">
-    <h1 id="hero-heading">X-NET Support Portal</h1>
-    <p>Submit your issue and we will get back to you within 24–48 hours.</p>
-  </section>
-
-  <section class="section" aria-labelledby="form-heading">
-    <h2 id="form-heading">Submit an Issue</h2>
-
-    <form id="issueForm" action="https://formspree.io/f/xkgpwyzr" method="POST">
+    <!-- Form -->
+    <form id="issueForm" action="https://formspree.io/f/xkgpwyzr" method="POST" novalidate>
       <label for="name">Name *</label>
-      <input type="text" id="name" name="name" placeholder="Your name" required>
+      <input id="name" name="name" type="text" required placeholder="Your name">
 
       <label for="email">Email *</label>
-      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      <input id="email" name="email" type="email" required placeholder="you@example.com">
+
+      <label for="handles">Other Contact Handles (optional)</label>
+      <input id="handles" name="handles" type="text" placeholder="@yourInstagram or Telegram ID">
 
       <label for="type">Issue Type *</label>
       <select id="type" name="type" required>
         <option value="" disabled selected>Select issue type</option>
-        <option value="Removals">Removals</option>
-        <option value="Recoveries">Recoveries</option>
-        <option value="Verification">Verification</option>
-        <option value="Other">Other</option>
+        <option>Removals</option>
+        <option>Recoveries</option>
+        <option>Verification</option>
+        <option>Other</option>
       </select>
 
       <label for="description">Issue Description *</label>
-      <textarea id="description" name="description" rows="5" placeholder="Describe your issue" required></textarea>
+      <textarea id="description" name="description" rows="5" required placeholder="Describe your issue..."></textarea>
 
       <button type="submit" class="btn">Submit Issue</button>
-      <div class="confirmation" id="confirmation">
-        ✅ Thank you! Your issue has been submitted. Expect a reply in 24–48 hours.
-      </div>
-    </form>
-  </section>
 
-  <footer>
-    © <span id="year"></span> X-NET • <a href="mailto:x-net@gmail.com">x-net@gmail.com</a>
-  </footer>
-</div>
+      <div id="successMsg" class="msg success" role="status" aria-live="polite">
+        ✅ Thank you — we received your issue. Expect a reply in 24–48 hours.
+      </div>
+      <div id="errorMsg" class="msg error" role="alert" aria-live="assertive"></div>
+    </form>
+
+    <footer>© <span id="year"></span> X-NET • <a href="mailto:x-net@gmail.com" style="color:var(--accent)">x-net@gmail.com</a></footer>
+  </div>
 
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-const form = document.getElementById('issueForm');
-const confirmation = document.getElementById('confirmation');
+  const form = document.getElementById('issueForm');
+  const successMsg = document.getElementById('successMsg');
+  const errorMsg = document.getElementById('errorMsg');
 
-form.addEventListener('submit', async function(e){
-  e.preventDefault();
-  const data = new FormData(form);
-  try {
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: data
-    });
-    if(response.ok){
-      form.reset();
-      confirmation.style.display = 'block';
-    } else {
-      alert('Oops! There was a problem submitting your issue.');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+    errorMsg.textContent = '';
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
     }
-  } catch(err){
-    alert('Network error! Please try again later.');
-  }
-});
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: {'Accept': 'application/json'}
+      });
+
+      if (res.ok) {
+        form.reset();
+        successMsg.style.display = 'block';
+        setTimeout(()=> successMsg.style.display='none',10000);
+        return;
+      }
+
+      if (res.status === 422) {
+        const json = await res.json().catch(()=>null);
+        errorMsg.textContent = json?.errors?.map(e=>e.message).join(' — ') || 'Validation failed.';
+        errorMsg.style.display = 'block';
+        return;
+      }
+
+      errorMsg.textContent = 'Server error: '+res.status+' — please try again later.';
+      errorMsg.style.display = 'block';
+
+    } catch (err) {
+      console.error('Fetch error:', err);
+      errorMsg.textContent = 'Network error — please check your connection or contact x-net@gmail.com.';
+      errorMsg.style.display = 'block';
+    }
+  });
 </script>
 </body>
-                                                   </html>
+</html>
